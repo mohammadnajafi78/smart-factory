@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: gunicorn --bind 0.0.0.0:8000 smartfactory.wsgi:application
+    volumes:
+      - .:/app
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=mysql://root:password@db/your_database_name
+
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: 'e2177'
+      MYSQL_USER: 'LXSmartFactory'
+      MYSQL_PASSWORD: 'SmartFactory@2024'
+      MYSQL_ROOT_PASSWORD: 'Je61pdBZqs7PjprvNk'
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
