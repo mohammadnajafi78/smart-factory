@@ -27,7 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0','82.115.25.219']
 
-
+CORS_ALLOWED_ORIGINS = [
+    "http://82.115.25.219:3001",
+]
 # Application definition
 
 INSTALLED_APPS = [
